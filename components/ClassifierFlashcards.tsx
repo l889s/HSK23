@@ -306,64 +306,49 @@ export function ClassifierFlashcards({
     );
   }
 
-  if (!card) {
-    return (
-      <div className="fixed inset-0 z-[80] flex flex-col bg-white">
-        {/* رأس بسيط */}
-        <div className="flex items-center justify-end border-b border-line px-4 py-3">
-          <button
-            onClick={onClose}
-            className="rounded-lg p-2 text-muted hover:bg-[#F7F7F7]"
-            aria-label="إغلاق"
-          >
-            <X className="h-5 w-5" />
-          </button>
-        </div>
-        <div className="flex flex-1 items-center justify-center">
-          <EmptyState
-            icon="📭"
-            title={mode === "srs" ? "لا توجد كلمات مستحقة الآن" : "لا توجد كلمات للممارسة"}
-            description={
-              mode === "srs"
-                ? "أحسنت! راجعت كل ما يجب اليوم. عُد لاحقاً عندما تحين المراجعات القادمة."
-                : "جرّب تعديل الفلاتر أو اختيار مستوى آخر للممارسة"
-            }
-            action={{
-              label: mode === "srs" ? "العودة" : "تصفّح المستويات",
-              href: mode === "srs" ? undefined : "/hsk-levels",
-              onClick: mode === "srs" ? onClose : undefined,
-            }}
-            tone={mode === "srs" ? "success" : "info"}
-          />
-        </div>
-      </div>
-    );
-  }
-
+if (!card) {
   return (
-    <div
-      className="fixed inset-0 z-[80] flex flex-col bg-white"
-      role="dialog"
-      aria-modal="true"
-    >
-      {/* الرأس */}
-      <div className="flex items-center justify-between border-b border-[#F0F0F0] px-4 py-3">
+    <div className="fixed inset-0 z-[80] flex flex-col bg-white">
+      <div className="flex items-center justify-end border-b border-line px-4 py-3">
         <button
           onClick={onClose}
-          className="rounded-xl p-2 text-muted hover:bg-[#F7F7F7]"
+          className="rounded-lg p-2 text-muted hover:bg-[#F7F7F7]"
           aria-label="إغلاق"
         >
           <X className="h-5 w-5" />
         </button>
-        <div className="flex items-center gap-2 text-sm font-bold text-ink">
-          {mode === "srs" && (
-            <span className="rounded-md bg-violet-soft px-2 py-0.5 text-[10px] font-bold text-violet">
-              مراجعة
-            </span>
-          )}
-          <span>
-            {idx + 1} / {total}
-          </span>
+      </div>
+
+      <div className="flex flex-1 items-center justify-center">
+        <EmptyState
+          icon="📭"
+          title={mode === "srs" ? "لا توجد كلمات للمراجعة" : "لا توجد كلمات مستحقة"}
+          description={
+            mode === "srs"
+              ? "أحسنت! راجعت كل ما يجب اليوم. غداً تابع المراجعة."
+              : "جرب تعديل الفلاتر أو اختر مستوى آخر للممارسة."
+          }
+          action={{
+            label: mode === "srs" ? "المستويات" : "العودة",
+            href: mode === "srs" ? undefined : "/hsk-levels",
+            onClick: mode === "srs" ? onClose : undefined,
+          }}
+          tone={mode === "srs" ? "success" : "info"}
+        />
+      </div>
+    </div>
+  );
+}
+
+return (
+  <div
+    className="fixed inset-0 z-[80] flex flex-col bg-white"
+    role="dialog"
+    aria-modal="true"
+  >
+    {/* باقي الكود الرئيسي */}
+  </div>
+);
         </div>
         <button
           onClick={restart}
