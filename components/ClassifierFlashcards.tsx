@@ -337,16 +337,12 @@ if (!card) {
         />
       </div>
     </div>
-  );
-}
-
-return (
+ v
   <div
     className="fixed inset-0 z-[80] flex flex-col bg-white"
     role="dialog"
     aria-modal="true"
   >
-    {/* باقي الكود الرئيسي */}
   </div>
 );
         </div>
