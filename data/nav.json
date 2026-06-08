@@ -1,0 +1,8 @@
+{
+  "items": [
+    { "href": "/",             "label": "الرئيسية",  "icon": "Home" },
+    { "href": "/hsk-levels",   "label": "المستويات", "icon": "Layers" },
+    { "href": "/classifiers",  "label": "التمارين",  "icon": "Sparkles" },
+    { "href": "/achievements", "label": "إنجازاتي",  "icon": "Trophy" }
+  ]
+}

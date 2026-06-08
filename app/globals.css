@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap");
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+}
+
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "IBM Plex Sans Arabic", "Noto Sans SC", sans-serif;
+  padding-bottom: 72px;
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+/* ===== Animations (Toast) ===== */
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fadeInSlide 0.25s ease-out both; }
+
+/* ===== Flip card ===== */
+.flip-scene { perspective: 1200px; }
+.flip-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+  width: 100%;
+}
+.flip-card.flipped { transform: rotateY(180deg); }
+.flip-face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flip-back { transform: rotateY(180deg); }
+
+/* ===== Flash بعد التقييم ===== */
+@keyframes flashFade {
+  0%   { opacity: 0; transform: scale(0.85); }
+  35%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); }
+}
+
+/* ===== Onboarding slide transition ===== */
+@keyframes onboardFade {
+  0%   { opacity: 0; transform: translateX(-12px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
